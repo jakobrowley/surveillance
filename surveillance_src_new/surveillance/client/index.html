@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Surveillance</title>
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.addEventListener("contextmenu", e => e.preventDefault());
+        document.addEventListener("mousedown", e => {
+          if (e.button === 2 || e.button === 3) {
+            e.preventDefault();
+          }
+        });
+      </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="base-plate">
+        <div id="screen-outer">
+          <div id="screen" class="screen-text screen">
+            <div id="screen-text">> Do you want to make a grid?</div>
+          </div>
+          <div class="screen-shine"></div>
+        </div>
+
+        <!-- Grid Section -->
+        <div id="grid-section" class="section">
+
+          <!-- Grid Tabs -->
+          <div class="row-container">
+            <div class="row-outer tabs">
+              <input type="radio" id="radio-no-grid" name="radio-grid" value="yes" checked/>
+              <label class="left-btn" for="radio-no-grid">No Grid</label>
+              <input type="radio" id="radio-2x2" name="radio-grid" value="no" />
+              <label for="radio-2x2">2x2</label>
+              <input type="radio" id="radio-3x3" name="radio-grid" value="no" />
+              <label class="right-btn" for="radio-3x3">3x3</label>
+            </div>
+          </div>
+
+          <!-- Grid Layout Previews -->
+          <div class="row-container">
+            <div id="grid-preview-outer" class="screen">
+              <div id="no-grid-preview"></div>
+              <div id="grid-2x2-preview"></div>
+              <div id="grid-3x3-preview"></div>
+              <div class="grid-preview-shine"></div>
+            </div>
+          </div>
+
+          <!-- HD/UHD Buttons -->
+          <div class="row-container">
+            <div class="row-outer tabs">
+              <input type="radio" id="radio-hd" name="radio-res" value="yes" checked/>
+              <label class="left-btn" for="radio-hd">Full HD</label>
+              <input type="radio" id="radio-uhd" name="radio-res" value="no" />
+              <label class="right-btn" for="radio-uhd">4K UHD</label>
+            </div>
+          </div>
+
+          <!-- Next Button -->
+          <div class="bottom-btns">
+            <div class="row-container">
+              <div class="row-outer">
+                <div id="choose-footage-btn" class="normal-btn large-btn full-btn">
+                  <div class="normal-btn-text">Choose Footage</div>
+                  <i class="fas fa-arrow-right-long"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footage Section -->
+        <div id="footage-section" class="section">
+
+          <!-- Pagination -->
+          <div class="row-container" id="pagination-container">
+            <div class="row-outer">
+              <div class="row-inner">
+                <div id="pagination-back" class="left-btn normal-btn small-btn">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div id="pagination-text" class="carousel-screen screen">Footage 1-3</div>
+                <div id="pagination-next" class="right-btn normal-btn small-btn">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footage Loaders -->
+          <div class="column-container">
+
+            <!-- Footage 1 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 1</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 2 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 2</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 3 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 3</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 4 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 4</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 5 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 5</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 6 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 6</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 7 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 7</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 8 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 8</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footage 9 -->
+            <div class="row-container footage-container">
+              <div class="led led-off"></div>
+              <div class="row-outer">
+                <div class="load-layer-screen screen">Load footage 9</div>
+                <div class="normal-btn small-btn right-btn">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back/Next Buttons -->
+          <div class="bottom-btns">
+            <div class="row-container">
+              <div class="row-outer">
+                <div id="footage-back-btn" class="normal-btn large-btn left-btn">
+                  <i class="fa-solid fa-arrow-left-long"></i>
+                  <div class="normal-btn-text">Grids</div>
+                </div>
+                <div id="footage-restart-btn" class="normal-btn large-btn left-btn">
+                  <i class="fa-solid fa-arrow-rotate-left"></i>
+                  <div class="normal-btn-text">Restart</div>
+                </div>
+                <div id="looks-btn" class="normal-btn large-btn right-btn">
+                  <div class="normal-btn-text">Looks</div>
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Looks Section -->
+        <div id="looks-section" class="section">
+
+          <!-- Stage Tabs -->
+          <div class="row-container">
+            <div class="row-outer tabs">
+              <input type="radio" id="radio-base" name="radio-stage" value="yes" checked/>
+              <label class="left-btn" for="radio-base">Base</label>
+              <input type="radio" id="radio-edit" name="radio-stage" value="no" />
+              <label for="radio-edit">Edit</label>
+              <input type="radio" id="radio-track" name="radio-stage" value="no" />
+              <label class="right-btn" for="radio-track">Track</label>
+            </div>
+          </div>
+
+          <!-- Base Section -->
+          <div id="base-section" class="section">
+
+            <div class="column-container">
+
+              <!-- Base Look Carousel -->
+              <div class="row-container">
+                <div class="row-outer">
+                  <div class="row-inner">
+                    <div id="looks-carousel-back-btn" class="left-btn normal-btn small-btn">
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div id="looks-text" class="carousel-screen screen">Black & White Camcorder</div>
+                    <div id="looks-carousel-next-btn" class="right-btn normal-btn small-btn">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Overlay Carousel -->
+              <div class="row-container">
+                <div class="row-outer">
+                  <div class="row-inner">
+                    <div id="overlay-carousel-back-btn" class="left-btn normal-btn small-btn">
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div id="overlay-text" class="carousel-screen screen">Camera</div>
+                    <div id="overlay-carousel-next-btn" class="right-btn normal-btn small-btn">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Switches Container -->
+            <div class="row-container">
+              <div class="row-outer tabs">
+                <form id="global-switches-form">
+                  <input type="checkbox" id="check-border" value="yes" checked/>
+                  <label class="left-icon-btn" for="check-border">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                  </label>
+                  <input type="checkbox" id="check-fps" value="no" />
+                  <label class="middle-icon-btn" for="check-fps">
+                    <i class="fa-solid fa-video"></i>
+                  </label>
+                  <input type="radio" id="radio-8" name="radio-fps" value="no" />
+                  <label for="radio-8">8</label>
+                  <input type="radio" id="radio-12" name="radio-fps" value="no" />
+                  <label for="radio-12">12</label>
+                  <input type="radio" id="radio-18" name="radio-fps" value="no" />
+                  <label class="right-btn" for="radio-18">18</label>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Edit Section -->
+          <div id="edit-section" class="section">
+            <form id="edit-section-form">
+
+              <!-- Look 01 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="1-quality" class="slider look-slider" type="range" min="200" max="500" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                          <input id="1-noise" class="slider look-slider" type="range" min="50" max="100" value="100">
+                        </div>
+                    </div>
+                  </div>
+
+                  <!-- Light Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Light</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="1-light" class="slider look-slider" type="range" min="85" max="230" value="127">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Edit Switches -->
+                  <div id="edit-switches" class="column-container">
+
+                    <!-- Glitch Slider -->
+                    <div class="row-container">
+                      <div class="slider-container">
+                        <div class="slider-text-container">
+                            <div class="slider-text">Glitch</div>
+                            </div>
+                        <div class="slider-outer">
+                          <input id="slider-glitch" class="slider look-slider" type="range" min="0" max="100" value="41">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Switches Container -->
+                    <div class="row-container">
+                      <div class="row-outer tabs">
+                        <input type="checkbox" id="check-night" value="no" />
+                        <label class="left-icon-btn" for="check-night">
+                          <i class="fa-solid fa-moon"></i>
+                        </label>
+                        <input type="checkbox" id="check-glitch" value="no" />
+                        <label id="check-glitch-label" class="middle-icon-btn" for="check-glitch">
+                          <i class="fa-solid fa-bolt"></i>
+                        </label>
+                        <input type="checkbox" id="1-color" value="yes" checked/>
+                        <label class="right-icon-btn" for="1-color" name="look-switch">
+                          <i class="fa-solid fa-palette"></i>
+                        </label>
+                        <input type="checkbox" id="3-color" value="yes" checked/>
+                        <label class="right-icon-btn" for="3-color" name="look-switch">
+                          <i class="fa-solid fa-palette"></i>
+                        </label>
+                        <input type="checkbox" id="5-color" value="yes" checked/>
+                        <label class="middle-icon-btn" for="5-color" name="look-switch">
+                          <i class="fa-solid fa-palette"></i>
+                        </label>
+                        <input type="checkbox" id="5-flicker" value="no" />
+                        <label class="right-icon-btn" for="5-flicker" name="look-switch">
+                          <i class="fa-solid fa-lightbulb"></i>
+                        </label>
+                        <input type="checkbox" id="6-bw" value="no" />
+                        <label class="middle-icon-btn" for="6-bw" name="look-switch">
+                          <i class="fa-solid fa-circle-half-stroke"></i>
+                        </label>
+                        <input type="checkbox" id="6-glitch" value="yes" checked />
+                        <label class="middle-icon-btn" for="6-glitch" name="look-switch">
+                          <i class="fa-solid fa-bolt-lightning"></i>
+                        </label>
+                        <input type="checkbox" id="6-warp" value="yes" checked/>
+                        <label class="right-icon-btn" for="6-warp" name="look-switch">
+                          <i class="fa-solid fa-water"></i>
+                        </label>
+                        <input type="checkbox" id="7-bw" value="no" />
+                        <label class="middle-icon-btn" for="7-bw" name="look-switch">
+                          <i class="fa-solid fa-circle-half-stroke"></i>
+                        </label>
+                        <input type="checkbox" id="7-glitch" value="yes" checked />
+                        <label class="middle-icon-btn" for="7-glitch" name="look-switch">
+                          <i class="fa-solid fa-bolt-lightning"></i>
+                        </label>
+                        <input type="checkbox" id="7-warp" value="yes" checked />
+                        <label class="right-icon-btn" for="7-warp" name="look-switch">
+                          <i class="fa-solid fa-water"></i>
+                        </label>
+                        <input type="checkbox" id="8-bw" value="no" />
+                        <label class="middle-icon-btn" for="8-bw" name="look-switch">
+                          <i class="fa-solid fa-circle-half-stroke"></i>
+                        </label>
+                        <input type="checkbox" id="8-flicker" value="yes" checked/>
+                        <label class="right-icon-btn" for="8-flicker" name="look-switch">
+                          <i class="fa-solid fa-lightbulb"></i>
+                        </label>
+                        <input type="checkbox" id="09-flicker" value="yes" checked/>
+                        <label class="middle-icon-btn" for="09-flicker" name="look-switch">
+                          <i class="fa-solid fa-lightbulb"></i>
+                        </label>
+                        <input type="checkbox" id="09-bw" value="no"/>
+                        <label class="right-icon-btn" for="09-bw" name="look-switch">
+                          <i class="fa-solid fa-circle-half-stroke"></i>
+                        </label>
+                        <input type="checkbox" id="10-flicker" value="yes" checked />
+                        <label class="right-icon-btn" for="10-flicker" name="look-switch">
+                          <i class="fa-solid fa-lightbulb"></i>
+                        </label>
+                        <input type="checkbox" id="11-color" value="yes" checked />
+                        <label class="right-icon-btn" for="11-color" name="look-switch">
+                          <i class="fa-solid fa-palette"></i>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 02 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Flicker Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Flicker</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="2-flicker" class="slider look-slider" type="range" min="0" max="30" value="5">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="2-noise" class="slider look-slider" type="range" min="10" max="100" value="28">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Light Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Light</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="2-light" class="slider look-slider" type="range" min="45" max="130" value="91">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 03 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="3-quality" class="slider look-slider" type="range" min="150" max="450" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                          <input id="3-noise" class="slider look-slider" type="range" min="10" max="100" value="28">
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 04 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="4-quality" class="slider look-slider" type="range" min="150" max="500" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hue Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Hue</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="4-hue" class="slider look-slider" type="range" min="0" max="360" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 05 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="5-quality" class="slider look-slider" type="range" min="75" max="500" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                          <input id="5-noise" class="slider look-slider" type="range" min="0" max="100" value="20">
+                        </div>
+                    </div>
+                  </div>
+
+                  <!-- Glow Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Glow</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="5-glow" class="slider look-slider" type="range" min="0.2" max="4" value="1">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Radius Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Radius</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="5-radius" class="slider look-slider" type="range" min="5" max="50" value="20">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 06 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Glow Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Glow</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="6-glow" class="slider look-slider" type="range" min="0" max="3" value="1.8" step="0.2">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Radius Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Radius</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="6-radius" class="slider look-slider" type="range" min="0" max="50" value="10">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Edges Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Edges</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="6-edges" class="slider look-slider" type="range" min="0" max="100" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 07 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Light Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Light</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="7-light" class="slider look-slider" type="range" min="20" max="180" value="80">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Glow Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Glow</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="7-glow" class="slider look-slider" type="range" min="0.2" max="4" value="1">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Radius Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Radius</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="7-radius" class="slider look-slider" type="range" min="5" max="50" value="20">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Light Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Light</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="7-light" class="slider look-slider" type="range" min="75" max="180" value="138">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Edges Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Edges</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="7-edges" class="slider look-slider" type="range" min="0" max="100" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 08 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="8-quality" class="slider look-slider" type="range" min="100" max="500" value="350">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="8-noise" class="slider look-slider" type="range" min="0" max="40" value="28">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hue Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Hue</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="8-hue" class="slider look-slider" type="range" min="0" max="360" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 09 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="09-quality" class="slider look-slider" type="range" min="150" max="500" value="320">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 10 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Hue Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Hue</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="10-hue" class="slider look-slider" type="range" min="0" max="360" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 11 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="11-quality" class="slider look-slider" type="range" min="150" max="500" value="320">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Noise Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Noise</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="11-noise" class="slider look-slider" type="range" min="0" max="50" value="20">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hue Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Hue</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="11-hue" class="slider look-slider" type="range" min="0" max="360" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 12 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="12-quality" class="slider look-slider" type="range" min="50" max="500" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Look 13 Section -->
+              <div class="edit-look-section section">
+
+                <!-- Slider Container -->
+                <div class="column-container">
+
+                  <!-- Quality Slider -->
+                  <div class="row-container">
+                    <div class="slider-container">
+                      <div class="slider-text-container">
+                        <div class="slider-text">Quality</div>
+                      </div>
+                      <div class="slider-outer">
+                        <input id="13-quality" class="slider look-slider" type="range" min="50" max="500" value="300">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Track Section -->
+            <div id="track-section" class="section">
+
+              <!-- Face/Body Buttons -->
+              <div class="row-container">
+                <div class="row-outer">
+                  <div id="trackers-prev" class="left-btn normal-btn tracker-pagination-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </div>
+                  <div id="add-face-btn" class="add-tracker-btn normal-btn large-btn">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <div class="normal-btn-text">Face</div>
+                  </div>
+                  <div id="add-body-btn" class="add-tracker-btn normal-btn large-btn">
+                    <i class="fa-solid fa-person-walking"></i>
+                    <div class="normal-btn-text">Body</div>
+                  </div>
+                  <div id="trackers-next" class="right-btn normal-btn tracker-pagination-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trackers Container -->
+              <div id="trackers-container" class="column-container">
+
+                <div id="trackers-page-1" class="column-container"></div>
+                <div id="trackers-page-2" class="column-container"></div>
+
+                <!-- Face Tracker -->
+                <template id="face-tracker">
+                  <div class="row-container">
+                    <div class="row-outer">
+                      <div id="tracker-content">
+                        <div class="tracker-icon">
+                          <i class="fa-regular fa-face-smile"></i>
+                        </div>
+                        <input type="text" class="tracker-name" value="FACE TRACKER">
+                      </div>
+                      <div class="tracker-edit-btn normal-btn small-btn middle-btn">
+                        <i class="fa-solid fa-wrench"></i>
+                      </div>
+                      <div class="tracker-trash-btn normal-btn small-btn right-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+
+                <!-- Body Tracker -->
+                <template id="body-tracker">
+                  <div class="row-container">
+                    <div class="row-outer">
+                      <div id="tracker-content">
+                        <div class="tracker-icon">
+                          <i class="fa-solid fa-person-walking"></i>
+                        </div>
+                        <input type="text" class="tracker-name" value="BODY TRACKER">
+                      </div>
+                      <div class="tracker-edit-btn normal-btn small-btn middle-btn">
+                        <i class="fa-solid fa-wrench"></i>
+                      </div>
+                      <div class="tracker-trash-btn normal-btn small-btn right-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+
+              </div>
+            </form>
+          </div>
+
+          <!-- Track Edit Section -->
+          <div id="track-edit-section" class="section">
+
+            <!-- Tracker Type -->
+            <div class="row-container">
+              <div class="row-outer">
+                <div class="row-inner">
+                  <div id="tracker-type-prev" class="left-btn normal-btn small-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </div>
+                  <div id="tracker-type-text" class="carousel-screen screen">Corners</div>
+                  <div id="tracker-type-next" class="right-btn normal-btn small-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sliders Container -->
+            <div class="column-container">
+
+              <!-- Hue Slider -->
+              <div class="row-container">
+                <div class="slider-container">
+                  <div class="slider-text-container">
+                    <div class="slider-text">Hue</div>
+                  </div>
+                  <div class="slider-outer">
+                    <input id="tracker-hue" class="slider" type="range" min="0" max="360" value="0">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Low Res Slider -->
+              <div class="row-container">
+                <div class="slider-container">
+                  <div class="slider-text-container">
+                    <div class="slider-text">Low Res</div>
+                  </div>
+                  <div class="slider-outer">
+                    <input id="tracker-res" class="slider" type="range" min="0" max="100" value="50">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shake Slider -->
+              <div class="row-container">
+                <div class="slider-container">
+                  <div class="slider-text-container">
+                    <div class="slider-text">Shake</div>
+                  </div>
+                  <div class="slider-outer">
+                    <input id="tracker-shake" class="slider" type="range" min="0" max="100" value="50">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Flicker Slider -->
+              <div class="row-container">
+                <div class="slider-container">
+                  <div class="slider-text-container">
+                    <div class="slider-text">Flicker</div>
+                  </div>
+                  <div class="slider-outer">
+                    <input id="tracker-flicker" class="slider" type="range" min="0" max="100" value="50">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Tracker Edit Switches Container -->
+            <div class="row-container">
+              <div class="row-outer tabs">
+                <input type="checkbox" id="tracker-shake-check" value="yes" checked />
+                <label class="left-icon-btn" for="tracker-shake-check">
+                  <i class="fa-solid fa-bolt"></i>
+                </label>
+                <input type="checkbox" id="tracker-flicker-check" value="yes" checked />
+                <label class="middle-icon-btn" for="tracker-flicker-check">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </label>
+                <input type="radio" id="radio-white" name="radio-tracker-hue" value="no" />
+                <label class="middle-icon-btn" for="radio-white">
+                  <i class="fa-regular fa-circle"></i>
+                </label>
+                <input type="radio" id="radio-black" name="radio-tracker-hue" value="no" />
+                <label class="middle-icon-btn" for="radio-black">
+                  <i class="fa-solid fa-circle"></i>
+                </label>
+                <input type="checkbox" id="tracker-res-check" value="yes" checked />
+                <label class="right-icon-btn" for="tracker-res-check">
+                  <i class="fa-solid fa-star"></i>
+                </label>
+              </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="bottom-btns">
+              <div class="row-container">
+                <div class="row-outer">
+                  <div id="track-edit-back-btn" class="normal-btn large-btn full-btn">
+                    <i class="fa-solid fa-arrow-left-long"></i>
+                    <div class="normal-btn-text">Back to Trackers</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Next/Back Buttons -->
+          <div id="looks-section-btns" class="row-container bottom-btns">
+            <div class="row-outer">
+              <div id="looks-back-btn" class="normal-btn large-btn left-btn">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                <div class="normal-btn-text">Footage</div>
+              </div>
+              <div id="done-btn" class="normal-btn large-btn right-btn">
+                <i class="fa-regular fa-circle-check"></i>
+                <div class="normal-btn-text">Done</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Transitions Section -->
+        <div id="transitions-section" class="section">
+
+          <!-- Transitions Carousel -->
+          <div class="row-container">
+            <div class="row-outer">
+              <div class="row-inner">
+                <div id="transitions-prev-btn" class="left-btn normal-btn small-btn">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div id="transitions-text" class="carousel-screen screen">Transition 01</div>
+                <div id="transitions-next-btn" class="right-btn normal-btn small-btn">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transitions Previews -->
+          <div class="row-container">
+            <div id="transitions-preview" class="screen">
+              <video id="transition-video" width="270" height="156" loop muted>
+                <source src="previews/1.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          <!-- Apply Button -->
+          <div class="bottom-btns">
+
+            <div class="row-container">
+              <div class="row-outer">
+                <div id="apply-btn" class="normal-btn large-btn full-btn">
+                  <i class="fa-regular fa-circle-check"></i>
+                  <div class="normal-btn-text">Apply</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="separator"></div>
+        <div class="row-container">
+          <div id="logo"></div>
+          <div class="row-outer tabs">
+            <input type="radio" id="radio-looks" name="radio-mode" value="yes" checked/>
+            <label class="left-icon-btn" for="radio-looks">
+              <i class="fa-solid fa-eye"></i>
+            </label>
+            <input type="radio" id="radio-transitions" name="radio-mode" value="no" />
+            <label class="right-icon-btn" for="radio-transitions">
+              <i class="fa-solid fa-arrows-left-right-to-line"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/CSInterface.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+  </body>
+</html>

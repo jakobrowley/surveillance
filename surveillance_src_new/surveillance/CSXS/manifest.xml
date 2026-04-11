@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ExtensionManifest
+	Version="6.0"
+	ExtensionBundleId="com.surveillance"
+	ExtensionBundleVersion="1.0"
+	ExtensionBundleName="Surveillance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ExtensionList>
+		<Extension Id="com.extension.surveillance" Version="1.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="AEFT" Version="13.0" />
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="9.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+    
+	<DispatchInfoList>
+		<Extension Id="com.extension.surveillance">
+			<DispatchInfo >
+				<Resources>
+                    <MainPath>./client/index.html</MainPath>
+                    <ScriptPath>./host/surveillance.jsx</ScriptPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>Surveillance</Menu>
+					<Geometry>
+						<Size>
+							<Height>453</Height>
+							<Width>270</Width>
+						</Size>
+						<MaxSize>
+							<Height>453</Height>
+							<Width>270</Width>
+						</MaxSize>
+						<MinSize>
+							<Height>453</Height>
+							<Width>270</Width>
+						</MinSize>
+					</Geometry>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>
