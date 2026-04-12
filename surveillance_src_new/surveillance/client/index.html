@@ -6,6 +6,63 @@
     <link rel="stylesheet" href="css/fontawesome.css">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!--
+      Sentry error telemetry (Component L instrumentation).
+      Uses Sentry's documented `window.sentryOnLoad` pattern for async
+      loading. This is the ONLY correct pattern when the loader script
+      is async:
+
+        1. We define `window.sentryOnLoad` BEFORE the async loader runs
+        2. The async loader checks for `window.sentryOnLoad` after the
+           SDK is fully initialized and calls it with the ready SDK
+        3. This works regardless of whether the async loader has loaded
+           yet when the inline script runs
+
+      DO NOT wrap this in `if (typeof Sentry !== "undefined")` — with the
+      async attribute, Sentry is ALWAYS undefined at this point, so the
+      guard would always fail and init would never run (Seer caught this
+      on PR #1).
+
+      The `async` attribute prevents startup hangs in offline environments
+      by not blocking on the CDN fetch.
+
+      See: https://tiny-tapes.sentry.io/settings/projects/surveillance/
+    -->
+    <script>
+      window.sentryOnLoad = function () {
+        Sentry.init({
+          release: "surveillance@1.0",
+          environment: "production",
+          sendDefaultPii: false,
+          tracesSampleRate: 0,
+          replaysSessionSampleRate: 0,
+          replaysOnErrorSampleRate: 0,
+          initialScope: {
+            tags: { plugin: "surveillance", host_app: "ae" }
+          },
+          beforeSend: function (event) {
+            // Tag (don't drop) events without stack traces. ExtendScript
+            // errors and manual captureMessage() calls don't carry JS
+            // stack traces — dropping them would silently lose the most
+            // important signal.
+            if (
+              event.exception &&
+              event.exception.values &&
+              event.exception.values.every(function (v) {
+                return !v.stacktrace || !v.stacktrace.frames || v.stacktrace.frames.length === 0;
+              })
+            ) {
+              event.tags = event.tags || {};
+              event.tags.no_stacktrace = true;
+            }
+            return event;
+          }
+        });
+      };
+    </script>
+    <script async src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
+
     <script>
         document.addEventListener("contextmenu", e => e.preventDefault());
         document.addEventListener("mousedown", e => {
