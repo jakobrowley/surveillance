@@ -6,6 +6,51 @@
     <link rel="stylesheet" href="css/fontawesome.css">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!--
+      Sentry error telemetry (Component L instrumentation).
+      Loads lazily via Sentry's loader script — the full SDK is only pulled
+      from the CDN if/when an error actually occurs, so the plugin stays
+      lightweight. Once loaded, it captures all unhandled errors, promise
+      rejections, and any errors explicitly reported via Sentry.captureException.
+      See: https://tiny-tapes.sentry.io/settings/projects/surveillance/
+    -->
+    <script src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
+    <script>
+      // Configure Sentry once the loader script has fetched the SDK.
+      // Sentry.onLoad() queues the callback until the SDK is ready, so this
+      // is safe to call even before Sentry is fully loaded.
+      if (typeof Sentry !== "undefined" && Sentry.onLoad) {
+        Sentry.onLoad(function () {
+          Sentry.init({
+            release: "surveillance@1.0",
+            environment: "production",
+            sendDefaultPii: false,
+            tracesSampleRate: 0,
+            replaysSessionSampleRate: 0,
+            replaysOnErrorSampleRate: 0,
+            initialScope: {
+              tags: { plugin: "surveillance", host_app: "ae" }
+            },
+            beforeSend: function (event) {
+              // Drop events with no meaningful stack trace (usually browser
+              // extensions or ad blockers leaking into the CEP panel).
+              if (
+                event.exception &&
+                event.exception.values &&
+                event.exception.values.every(function (v) {
+                  return !v.stacktrace || !v.stacktrace.frames || v.stacktrace.frames.length === 0;
+                })
+              ) {
+                return null;
+              }
+              return event;
+            }
+          });
+        });
+      }
+    </script>
+
     <script>
         document.addEventListener("contextmenu", e => e.preventDefault());
         document.addEventListener("mousedown", e => {
