@@ -9,60 +9,59 @@
 
     <!--
       Sentry error telemetry (Component L instrumentation).
-      Loads via Sentry's async loader script — the `async` attribute is
-      critical: without it, offline customers (editors on set, in planes,
-      in network-restricted studios) would see startup hangs as the browser
-      tries to fetch js.sentry-cdn.com and times out. Async lets startup
-      proceed while the script loads in the background.
+      Uses Sentry's documented `window.sentryOnLoad` pattern for async
+      loading. This is the ONLY correct pattern when the loader script
+      is async:
 
-      The full SDK is only actually pulled from the CDN if/when an error
-      occurs, so the plugin stays lightweight in the common case.
+        1. We define `window.sentryOnLoad` BEFORE the async loader runs
+        2. The async loader checks for `window.sentryOnLoad` after the
+           SDK is fully initialized and calls it with the ready SDK
+        3. This works regardless of whether the async loader has loaded
+           yet when the inline script runs
+
+      DO NOT wrap this in `if (typeof Sentry !== "undefined")` — with the
+      async attribute, Sentry is ALWAYS undefined at this point, so the
+      guard would always fail and init would never run (Seer caught this
+      on PR #1).
+
+      The `async` attribute prevents startup hangs in offline environments
+      by not blocking on the CDN fetch.
 
       See: https://tiny-tapes.sentry.io/settings/projects/surveillance/
     -->
-    <script async src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
     <script>
-      // Configure Sentry once the loader script has fetched the SDK.
-      // Sentry.onLoad() queues the callback until the SDK is ready, so this
-      // is safe to call even before Sentry is fully loaded.
-      if (typeof Sentry !== "undefined" && Sentry.onLoad) {
-        Sentry.onLoad(function () {
-          Sentry.init({
-            release: "surveillance@1.0",
-            environment: "production",
-            sendDefaultPii: false,
-            tracesSampleRate: 0,
-            replaysSessionSampleRate: 0,
-            replaysOnErrorSampleRate: 0,
-            initialScope: {
-              tags: { plugin: "surveillance", host_app: "ae" }
-            },
-            beforeSend: function (event) {
-              // IMPORTANT: do NOT drop events without stack traces. Many of the
-              // errors we most want to capture — ExtendScript errors bridged
-              // back via evalScript callbacks, native IPC errors, manual
-              // Sentry.captureMessage() calls — are reported as strings or
-              // synthetic events with no stacktrace. Dropping them would
-              // silently lose the most important signal.
-              //
-              // Instead, tag stackless events so they can be filtered in the
-              // Sentry UI if they turn out to be noisy in practice.
-              if (
-                event.exception &&
-                event.exception.values &&
-                event.exception.values.every(function (v) {
-                  return !v.stacktrace || !v.stacktrace.frames || v.stacktrace.frames.length === 0;
-                })
-              ) {
-                event.tags = event.tags || {};
-                event.tags.no_stacktrace = true;
-              }
-              return event;
+      window.sentryOnLoad = function () {
+        Sentry.init({
+          release: "surveillance@1.0",
+          environment: "production",
+          sendDefaultPii: false,
+          tracesSampleRate: 0,
+          replaysSessionSampleRate: 0,
+          replaysOnErrorSampleRate: 0,
+          initialScope: {
+            tags: { plugin: "surveillance", host_app: "ae" }
+          },
+          beforeSend: function (event) {
+            // Tag (don't drop) events without stack traces. ExtendScript
+            // errors and manual captureMessage() calls don't carry JS
+            // stack traces — dropping them would silently lose the most
+            // important signal.
+            if (
+              event.exception &&
+              event.exception.values &&
+              event.exception.values.every(function (v) {
+                return !v.stacktrace || !v.stacktrace.frames || v.stacktrace.frames.length === 0;
+              })
+            ) {
+              event.tags = event.tags || {};
+              event.tags.no_stacktrace = true;
             }
-          });
+            return event;
+          }
         });
-      }
+      };
     </script>
+    <script async src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
 
     <script>
         document.addEventListener("contextmenu", e => e.preventDefault());
