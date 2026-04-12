@@ -9,13 +9,18 @@
 
     <!--
       Sentry error telemetry (Component L instrumentation).
-      Loads lazily via Sentry's loader script — the full SDK is only pulled
-      from the CDN if/when an error actually occurs, so the plugin stays
-      lightweight. Once loaded, it captures all unhandled errors, promise
-      rejections, and any errors explicitly reported via Sentry.captureException.
+      Loads via Sentry's async loader script — the `async` attribute is
+      critical: without it, offline customers (editors on set, in planes,
+      in network-restricted studios) would see startup hangs as the browser
+      tries to fetch js.sentry-cdn.com and times out. Async lets startup
+      proceed while the script loads in the background.
+
+      The full SDK is only actually pulled from the CDN if/when an error
+      occurs, so the plugin stays lightweight in the common case.
+
       See: https://tiny-tapes.sentry.io/settings/projects/surveillance/
     -->
-    <script src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
+    <script async src="https://js.sentry-cdn.com/0200485e9c2b00c6e0fab0028a3aae3e.min.js" crossorigin="anonymous"></script>
     <script>
       // Configure Sentry once the loader script has fetched the SDK.
       // Sentry.onLoad() queues the callback until the SDK is ready, so this
@@ -33,8 +38,15 @@
               tags: { plugin: "surveillance", host_app: "ae" }
             },
             beforeSend: function (event) {
-              // Drop events with no meaningful stack trace (usually browser
-              // extensions or ad blockers leaking into the CEP panel).
+              // IMPORTANT: do NOT drop events without stack traces. Many of the
+              // errors we most want to capture — ExtendScript errors bridged
+              // back via evalScript callbacks, native IPC errors, manual
+              // Sentry.captureMessage() calls — are reported as strings or
+              // synthetic events with no stacktrace. Dropping them would
+              // silently lose the most important signal.
+              //
+              // Instead, tag stackless events so they can be filtered in the
+              // Sentry UI if they turn out to be noisy in practice.
               if (
                 event.exception &&
                 event.exception.values &&
@@ -42,7 +54,8 @@
                   return !v.stacktrace || !v.stacktrace.frames || v.stacktrace.frames.length === 0;
                 })
               ) {
-                return null;
+                event.tags = event.tags || {};
+                event.tags.no_stacktrace = true;
               }
               return event;
             }
